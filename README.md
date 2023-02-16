@@ -1,4 +1,4 @@
-# PSPD - Lista MPI OMP
+# PSPD - Lista MPI & OMP
 
 ## Problema 01: Fractal MPI - Escrita Serial
 
