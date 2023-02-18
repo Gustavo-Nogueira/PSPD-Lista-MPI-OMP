@@ -49,7 +49,7 @@ make run <number-of-threads> <fractal-height>
 
 ### Descrição da Solução
 
-A solução OMP utiliza um _scheduler_ dinâmico para dividir as tarefas de cálculo e escrita do fractal entre as _threads_. Um x atribuí tarefas a uma _thread_ conforme a sua disponibilidade, assim a distribuição de tarefas entre as _threads_ nem sempre vai ser exatamente igual. Além disso, a escrita do arquivo utiliza o conjunto de funções _posix_ (_open, pwrite, close_), onde a _pwrite_ permite a escrita paralela a partir de parâmetros de _offset_.
+A solução OMP utiliza um _scheduler_ dinâmico para dividir as tarefas de cálculo e escrita do fractal entre as _threads_. Um _scheduler_ dinâmico atribui tarefas a uma _thread_ conforme a sua disponibilidade, assim a distribuição de tarefas entre as _threads_ nem sempre vai ser exatamente igual. Além disso, a escrita do arquivo utiliza o conjunto de funções _posix_ (_open, pwrite, close_), onde a _pwrite_ permite a escrita paralela a partir de parâmetros de _offset_.
 
 ## Problema 04 - Relatório dos Problemas 1, 2 e 3
 
