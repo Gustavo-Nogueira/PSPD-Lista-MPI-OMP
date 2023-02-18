@@ -17,11 +17,13 @@ int main(int argc, char *argv[]) {
     int process_rank, numof_process;
     MPI_Win win;
     int *my_token;
+    char hostname[100] = {0};
 
     // Inicializacao do mpi
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numof_process);
     MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
+    gethostname(hostname, 100);
 
     if ((argc <= 1) | (atoi(argv[1]) < 1)) {
         fprintf(stderr, "Entre 'N' como um inteiro positivo! \n");
@@ -68,13 +70,13 @@ int main(int argc, char *argv[]) {
 
     /* Inicio da Regiao Critica */
 
-    printf("[Rank %d] Inicio Escrita no Intervalo: %d-%d \n", process_rank, start, end);
+    printf("[Rank %d][Host %s] Inicio Escrita no Intervalo: %d-%d \n", process_rank, hostname, start, end);
 
     write_file_offset(OUTFILE, offset, pixel_array, tot_bytes);
 
     // sleep(2);  // para visualizar progresso
 
-    printf("[Rank %d] Fim Escrita no Intervalo: %d-%d \n", process_rank, start, end);
+    printf("[Rank %d][Host %s] Fim Escrita no Intervalo: %d-%d \n", process_rank, hostname, start, end);
 
     /* Fim da Regiao Critica */
 

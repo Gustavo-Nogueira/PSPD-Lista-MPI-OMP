@@ -15,11 +15,13 @@
 int main(int argc, char *argv[]) {
     FILE *output_file;
     int process_rank, numof_process;
+    char hostname[100] = {0};
 
     // Inicializacao do mpi
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numof_process);
     MPI_Comm_rank(MPI_COMM_WORLD, &process_rank);
+    gethostname(hostname, 100);
 
     if ((argc <= 1) | (atoi(argv[1]) < 1)) {
         fprintf(stderr, "Entre 'N' como um inteiro positivo! \n");
@@ -60,11 +62,11 @@ int main(int argc, char *argv[]) {
 
     calculate_julia_fractal(pixel_array, h_fractal, start, end);
 
-    printf("[Rank %d] Inicio Escrita no Intervalo: %d-%d \n", process_rank, start, end);
+    printf("[Rank %d][Host %s] Inicio Escrita no Intervalo: %d-%d \n", process_rank, hostname, start, end);
 
     mpi_write_file_offset(OUTFILE, offset, pixel_array, tot_bytes);
 
-    printf("[Rank %d] Fim Escrita no Intervalo: %d-%d \n", process_rank, start, end);
+    printf("[Rank %d][Host %s] Fim Escrita no Intervalo: %d-%d \n", process_rank, hostname, start, end);
 
     // Free pointers
     free(pixel_array);
