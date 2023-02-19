@@ -33,7 +33,7 @@ void omp_selection_sort(int *v, int n) {
     for (int i = n - 1; i > 0; --i) {
         struct CompareElement emax = {.index = i, .value = v[i]};
 
-        // Reduction to find the maximum value in the [0, j-1] interval (sharing emax attribute)
+        // Reduction to find the maximum value in the [0, j-1] interval 
         #pragma omp parallel for reduction(maximum : emax)
         for (int j = i - 1; j >= 0; --j) {
             if (v[j] > emax.value) {

@@ -80,6 +80,23 @@ Observações:
 
 Foi possível notar as soluções MPI com escrita serial e escrita paralela possuem um desempenho bastante parecido. Quanto a solução em OMP, foi possível notar que, inicialmente, o desempenho melhora conforme o número de _threads_ aumenta, porém, quando o limite de 15 _threads_ é ultrapassado o desempenho começa a cair, assim atingindo o pico de performance com 15 _threads_.
 
+## Problema 05: Selection Sort OMP 
+
+### Compilacão
+
+```
+make 
+```
+
+### Execução
+```
+make run <number-of-threads> <size-of-vector>
+```
+
+### Descrição da Solução
+
+Para melhorar a performance da função de ordenação _selection_sort_, foi utilizado a cláusula _reduction_ (aplicado com o operador de redução _max_) no laço _for_ utilizada para encontrar o elemento que deve ocupar a posição _i_ do vetor. A cláusula de _reduction_ do OpenMP permite especificar uma ou mais variáveis ​​privadas de thread que estão sujeitas a uma operação de redução no final da região paralela.
+
 ## Referências
 
 **MPI:**
