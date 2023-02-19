@@ -1,5 +1,13 @@
 # PSPD - Lista MPI & OMP
 
+## Fractal Julia
+
+O Fractal abaixo é chamado de Fractal Julia[1][2] e pode ser obtido por meio da execução das soluções das pastas _problem_01_, _problem_02_ e _problem_03_.
+
+<p align='center'>
+    <img src='images/fractal_julia.bmp' height=500>
+</p>
+
 ## Problema 01: Fractal MPI - Escrita Serial
 
 ### Compilacão
@@ -10,8 +18,10 @@ make
 
 ### Execução
 ```
-make run <number-of-process> <fractal-height>
+make run <hosts-file> <number-of-process> <fractal-height>
 ```
+
+- Para rodar no ambiente da chococino, basta utilizar o arquivo **chococino_hosts** como _hostfile_.
 
 ### Descrição da Solução
 
@@ -27,8 +37,10 @@ make
 
 ### Execução
 ```
-make run <number-of-process> <fractal-height>
+make run <hosts-file> <number-of-process> <fractal-height>
 ```
+
+- Para rodar no ambiente da chococino, basta utilizar o arquivo **chococino_hosts** como _hostfile_.
 
 ### Descrição da Solução
 
@@ -64,11 +76,11 @@ A figura abaixo mostra a infraestrutura utilizada da chococino para realizar os 
 ### Testes
 
 <p align='center'>
-    <img src='images/tabela.png'>
+    <img src='images/tabela_p4.png'>
 </p>
 
 <p align='center'>
-    <img src='images/grafico.png'>
+    <img src='images/grafico_p4.png'>
 </p>
 
 Observações:
@@ -97,14 +109,30 @@ make run <number-of-threads> <size-of-vector>
 
 Para melhorar a performance da função de ordenação _selection_sort_, foi utilizado a cláusula _reduction_ (aplicado com o operador de redução _max_) no laço _for_ utilizada para encontrar o elemento que deve ocupar a posição _i_ do vetor. A cláusula de _reduction_ do OpenMP permite especificar uma ou mais variáveis ​​privadas de thread que estão sujeitas a uma operação de redução no final da região paralela.
 
+### Testes
+
+<p align='center'>
+    <img src='images/tabela_p5.png'>
+</p>
+
+<p align='center'>
+    <img src='images/grafico_p5.png'>
+</p>
+
+
 ## Referências
 
-**MPI:**
+**Fractais**
 
-- https://www.open-mpi.org/faq/?category=running
-- https://docs.oracle.com/cd/E19923-01/820-6793-10/ExecutingPrograms.html
-- https://www.ibm.com/docs/en/smpi/10.2?topic=runs-specifying-hosts-using-host-list-file
+- [1] https://pt.wikipedia.org/wiki/Conjunto_de_Mandelbrot
+- [2] https://pt.wikipedia.org/wiki/Conjunto_de_Julia
 
-**Open MP:**
+**MPI**
 
-- https://nullprogram.com/blog/2017/03/01/
+- [3] https://www.open-mpi.org/faq/?category=running
+- [4] https://docs.oracle.com/cd/E19923-01/820-6793-10/ExecutingPrograms.html
+- [5] https://www.ibm.com/docs/en/smpi/10.2?topic=runs-specifying-hosts-using-host-list-file
+
+**Open MP**
+
+- [6] https://nullprogram.com/blog/2017/03/01/

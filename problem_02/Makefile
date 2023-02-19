@@ -8,7 +8,7 @@ all:
 	mpicc fractal.o utils.o main.o -o program -lm
 
 run: 
-	mpirun --hostfile chococino_hosts -np $(call get_arg, 1) ./program $(call get_arg, 2)
+	mpirun --hostfile $(call get_arg, 1) -np $(call get_arg, 2) ./program $(call get_arg, 3)
 
 clean:
 	-rm -f ./*.o ./*.bmp program
